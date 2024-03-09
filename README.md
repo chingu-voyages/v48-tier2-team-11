@@ -34,10 +34,8 @@ Everyone on your team should add their name along with a link to their GitHub
 your repo access and to practice PR'ing with your team _before_ you start
 coding!
 
-- Keerthi Kumar: [GitHub](https://github.com/keerthikmr) / [LinkedIn](www.linkedin.com/in/keerthi-kumar10)
-
+- Keerthi Kumar: [GitHub](https://github.com/keerthikmr) / [LinkedIn](https://www.linkedin.com/in/keerthi-kumar10)
 - Yasir Azhari: [GitHub](https://github.com/YasirAzhari) / [LinkedIn](https://www.linkedin.com/in/yasir-azhari-6a48b8219/)
-
-  ...
+- Dinesh Anbazhagan: [GitHub](https://github.com/itzmidinesh) / [LinkedIn](https://www.linkedin.com/in/dineshanbazhagan/)
 
 - Teammate name #n: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
