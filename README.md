@@ -37,5 +37,6 @@ coding!
 - Keerthi Kumar: [GitHub](https://github.com/keerthikmr) / [LinkedIn](https://www.linkedin.com/in/keerthi-kumar10)
 - Yasir Azhari: [GitHub](https://github.com/YasirAzhari) / [LinkedIn](https://www.linkedin.com/in/yasir-azhari-6a48b8219/)
 - Dinesh Anbazhagan: [GitHub](https://github.com/itzmidinesh) / [LinkedIn](https://www.linkedin.com/in/dineshanbazhagan/)
+- Saswat Samal: [GitHub](https://github.com/saswat10) / [LinkedIn](https://www.linkedin.com/in/saswat1091/)
 
 - Teammate name #n: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
