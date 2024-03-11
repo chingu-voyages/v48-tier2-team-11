@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './Header';
 import DinoList from './DinoList';
 import DinoInfo from './DinoInfo';
