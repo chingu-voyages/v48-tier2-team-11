@@ -14,7 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/dinosaurs" element={<DinoList />} />
-          <Route path="/dinosaurs/:dinosaurId" element={<DinoInfo />} />
+          <Route path="/dinosaurs/:dinoId" element={<DinoInfo />} />
           <Route path="/charts" element={<ChartList />} />
         </Routes>
       </BrowserRouter>
