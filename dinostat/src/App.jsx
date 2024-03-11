@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Header from './Header';
-import DinoList from './DinoList';
-import DinoInfo from './DinoInfo';
-import ChartList from './ChartList';
-import Home from './Home';
+import Header from './Components/Header';
+import DinoList from './Components/DinoList';
+import DinoInfo from './Components/DinoInfo';
+import ChartList from './Components/ChartList';
+import Home from './Components/Home';
 
 function App() {
   return (
