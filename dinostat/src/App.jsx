@@ -1,11 +1,24 @@
 import React from 'react';
-import 
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Header from './Header';
+import DinoList from './DinoList';
+import DinoInfo from './DinoInfo';
+import ChartList from './ChartList';
+import Home from './Home';
 
 function App() {
   return (
-    <>
-      DinoStat
-    </>
+    <div>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/dinosaurs" element={<DinoList />} />
+          <Route path="/dinosaurs/:dinosaurId" element={<DinoInfo />} />
+          <Route path="/charts" element={<ChartList />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 
