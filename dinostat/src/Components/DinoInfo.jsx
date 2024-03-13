@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export default function DinoInfo() {
   const { dinoId } = useParams();
-  const [dinoJson, setDinoJson] = useState({ id: 'Loading...', name: 'Loading...', description: 'Loading...'});
+  const [dinoJson, setDinoJson] = useState({ id: 'Loading...', name: 'Loading...', description: 'Loading...' });
 
   // Every time dinoInfo is rendered, call api by dinoId and set dinoJson with response
   useEffect(() => {
