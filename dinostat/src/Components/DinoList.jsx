@@ -13,35 +13,47 @@ export default function DinoList() {
     });
   }, []);
 
+  // Keeps track of the current page number
   const [pageCounter, setPageCounter] = useState(1);
 
+  // Handles the next page button click
   const handleUpClick = () => {
     setPageCounter(pageCounter + 1);
   };
 
+  // Handles the previous page button click
   const handleDownClick = () => {
     setPageCounter(pageCounter - 1);
   };
 
-  // TODO: Replace this return block with a card component
-  // For now I'm just rendering the id as a link to each info page
-  // ~Yasir
+  /*
+    TODO: Replace this return block with a card component
+    For now I'm just rendering the id as a link to each info page
+    ~Yasir
+  */
 
+  /*
+    Contains 8 dinosaurs to be displayed on the current page. So we don't need to change the
+    dinoJsonList state every time the page changes.
+  */
   const [dinoDisplayList, setDinoDisplayList] = useState([]);
 
+  // Dynamically sets the dinoDisplayList based on the current page number
   useEffect(() => {
     setDinoDisplayList(dinoJsonList.slice((pageCounter - 1) * 8, pageCounter * 8));
   }, [pageCounter, dinoJsonList]);
 
   return (
     <div>
-      {dinoDisplayList.map((x) => (
-        <ul key={x.id}>
-          <Link to={`/dinosaurs/${x.id}`}>
-            {x.id}
-          </Link>
-        </ul>
-      ))}
+      <div className="dino-list">
+        {dinoDisplayList.map((x) => (
+          <ul key={x.id} className="dino-list-item">
+            <Link to={`/dinosaurs/${x.id}`}>
+              {x.id}
+            </Link>
+          </ul>
+        ))}
+      </div>
 
       <div className="page-switch-buttons">
 
