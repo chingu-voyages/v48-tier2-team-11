@@ -13,16 +13,21 @@ export default function DinoList() {
     });
   }, []);
 
+  const totalDinos = dinoJsonList.length;
+
   // Keeps track of the current page number
   const [pageCounter, setPageCounter] = useState(1);
 
   // Handles the next page button click
   const handleUpClick = () => {
+    // Prevent the pageCounter from going over the total number of pages
+    if (totalDinos / 8 < pageCounter) return;
     setPageCounter(pageCounter + 1);
   };
 
   // Handles the previous page button click
   const handleDownClick = () => {
+    // Prevent the pageCounter from going to 0
     if (pageCounter === 1) return;
 
     setPageCounter(pageCounter - 1);
