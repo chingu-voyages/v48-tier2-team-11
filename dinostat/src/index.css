@@ -1,3 +1,15 @@
+.dino-list {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+}
+
+.dino-list-item{
+    width: 40%;
+    justify-content: center;
+}
+
 .page-switch-buttons {
     display: flex;
     justify-content: center;
