@@ -1,0 +1,8 @@
+.page-switch-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.page-switch-buttons button, .page-switch-buttons div {
+    margin: 0 5px;
+}
