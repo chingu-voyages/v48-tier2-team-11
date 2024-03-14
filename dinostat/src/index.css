@@ -4,12 +4,15 @@
     box-sizing: border-box;
 }
 
+:root {
+    --header-color: rgb(190, 178, 178);
+}
+
 .header {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(190, 178, 178);
-    /* margin-bottom: 2rem; */
+    background-color: var(--header-color);
     padding: 1rem;
 }
 
@@ -26,12 +29,13 @@
 
 .nav-links {
     position: absolute;
+    z-index: 99;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     padding: 1rem;
-    background-color: rgb(190, 178, 178);
+    background-color: var(--header-color);
 }
 
 .link-item {
