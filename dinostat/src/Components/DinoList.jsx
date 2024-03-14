@@ -7,7 +7,7 @@ export default function DinoList() {
   const [dinoJsonList, setDinoJsonList] = useState([{ id: 1 }]);
 
   // Every time dinoList is rendered, call api and set JsonList based on incoming response data
-  useEffect(()=>{
+  useEffect(() => {
     axios.get('https://chinguapi.onrender.com/dinosaurs').then((res) => {
       setDinoJsonList(res.data);
     });
