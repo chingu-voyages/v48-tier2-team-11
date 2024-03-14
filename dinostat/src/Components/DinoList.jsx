@@ -23,6 +23,8 @@ export default function DinoList() {
 
   // Handles the previous page button click
   const handleDownClick = () => {
+    if (pageCounter === 1) return;
+
     setPageCounter(pageCounter - 1);
   };
 
