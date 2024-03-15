@@ -10,7 +10,7 @@
 
 .header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     background-color: var(--header-color);
     padding: 1rem;
@@ -18,8 +18,8 @@
 
 .menu {
     position: absolute;
-    left: 0;
-    padding-left: 1rem;
+    right: 0;
+    padding-right: 1rem;
 }
 
 /* Replace with image and set size */
