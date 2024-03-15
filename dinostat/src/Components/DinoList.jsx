@@ -5,15 +5,15 @@ import axios from 'axios';
 export default function DinoList() {
   // Holds response data from the api to be fed to each dinosaur card.
   const [dinoJsonList, setDinoJsonList] = useState([]);
+  const [totalDinos, setTotalDinos] = useState(0);
 
   // Every time dinoList is rendered, call api and set JsonList based on incoming response data
   useEffect(() => {
     axios.get('https://chinguapi.onrender.com/dinosaurs').then((res) => {
       setDinoJsonList(res.data);
+      setTotalDinos(res.data.length);
     });
   }, []);
-
-  const totalDinos = dinoJsonList.length;
 
   // Keeps track of the current page number
   const [pageCounter, setPageCounter] = useState(1);
