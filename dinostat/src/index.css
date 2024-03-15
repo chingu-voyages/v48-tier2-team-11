@@ -46,15 +46,12 @@
 }
 
 .dino-list {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    justify-content: center;
+    text-align: center;
+    padding: 1.5rem 0rem;
 }
 
 .dino-list-item{
-    width: 40%;
-    justify-content: center;
+    padding: 1rem 0rem;
 }
 
 .page-switch-buttons {
@@ -64,4 +61,18 @@
 
 .page-switch-buttons button, .page-switch-buttons div {
     margin: 0 5px;
+}
+
+@media (min-width: 600px) {
+    .dino-list {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .dino-list-item{
+        width: 40%;
+        justify-content: center;
+    }
 }
