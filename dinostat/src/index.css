@@ -1,3 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --header-color: rgb(190, 178, 178);
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--header-color);
+    padding: 1rem;
+}
+
+.menu {
+    position: absolute;
+    left: 0;
+    padding-left: 1rem;
+}
+
+/* Replace with image and set size */
+.menu button {
+    font-size: 1.5rem;
+}
+
+.nav-links {
+    position: absolute;
+    z-index: 99;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--header-color);
+}
+
+.link-item {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    padding: 0.5rem;
+}
+
 .dino-list {
     display: flex;
     flex-wrap: wrap;
