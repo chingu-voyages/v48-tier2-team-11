@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
+import DinoCard from './DinoCard';
 
 export default function DinoList() {
   // Holds response data from the api to be fed to each dinosaur card.
@@ -54,11 +54,9 @@ export default function DinoList() {
     <div>
       <div className="dino-list">
         {dinoDisplayList.map((x) => (
-          <ul key={x.id} className="dino-list-item">
-            <Link to={`/dinosaurs/${x.id}`}>
-              {x.id}
-            </Link>
-          </ul>
+          <div key={x.id} className="dino-list-item">
+            <DinoCard id={x.id} img={x.imageSrc} title={x.name} description={x.description} />
+          </div>
         ))}
       </div>
 
@@ -70,6 +68,8 @@ export default function DinoList() {
 
         <div>
           {pageCounter}
+          /
+          {Math.ceil(totalDinos / 8)}
         </div>
 
         <button type="button" onClick={handleUpClick}>

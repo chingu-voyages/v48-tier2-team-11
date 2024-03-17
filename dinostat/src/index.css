@@ -50,8 +50,35 @@
     padding: 1.5rem 0rem;
 }
 
+
 .dino-list-item{
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.284);
     padding: 1rem 0rem;
+    margin: 0.5rem;
+    text-align: left;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.dinoCard{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.dinoCard-title{
+    font-size: 24pt;
+    color: black;
+    text-decoration: none;
+}
+
+.dinoCard-description{
+    color: grey;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.moreInfo{
+    padding: 0.5rem;
 }
 
 .dinoInfo{
@@ -78,6 +105,7 @@
 
 .page-switch-buttons button, .page-switch-buttons div {
     margin: 0 5px;
+    padding: 1rem;
 }
 
 @media (min-width: 600px) {
