@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import missing from '../../public/missing.png';
 
 export default function DinoInfo() {
   const { dinoId } = useParams();
@@ -12,20 +13,27 @@ export default function DinoInfo() {
     console.log(dinoJson);
   }, [dinoId]);
 
+  const camelToFlat=(camel)=>{
+    const camelCase = camel.toString().replace(/([a-z])([A-Z])/g, '$1 $2');
+    return camelCase;
+  };
+
+  const keys = Object.keys(dinoJson).splice(3);
+
   return (
     <section className="dinoInfo">
       <h2 className="dinoInfo-header">{`${dinoJson.name}`}</h2>
-      <img src={dinoJson.imageSrc} alt={`${dinoJson.name}`} className="dinoInfo-img" />
-      <div>{`Description: ${dinoJson.description}`}</div>
-      <div>{`Length: ${dinoJson.length}m`}</div>
-      <div>{`Found In: ${dinoJson.foundIn}`}</div>
-      <div>{`Named by: ${dinoJson.namedBy}`}</div>
-      <div>{`Taxonomy: ${dinoJson.taxonomy}`}</div>
-      <div>{`Type of Dinosaur: ${dinoJson.typeOfDinosaur}`}</div>
-      <div>{`Species: ${dinoJson.typeSpecies}`}</div>
-      <div>{`Weight: ${dinoJson.weight}`}</div>
-      <div>{`When Lived: ${dinoJson.whenLived}`}</div>
-      <div>{`Diet: ${dinoJson.diet}`}</div>
+      <picture className="dinoInfo-img">
+        <img src={dinoJson.imageSrc === 'N/A' ? missing : dinoJson.imageSrc} alt={`${dinoJson.name}`} />
+      </picture>
+      <div className="dinoInfo-content">
+       {keys.map((key)=> {
+        return (
+          <div><b>{camelToFlat(key)}</b>: {dinoJson[key]}</div>
+         );
+       })}
+      </div>
+
     </section>
   );
 }
