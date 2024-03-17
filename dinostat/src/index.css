@@ -54,6 +54,23 @@
     padding: 1rem 0rem;
 }
 
+.dinoInfo{
+    display: flex;
+    flex-direction: column;
+    gap:3px;
+    padding: 1rem;
+    margin-inline: auto;
+}
+
+.dinoInfo-header{
+    align-self: center;
+    text-transform: uppercase;
+}
+.dinoInfo-img{
+    align-self: center;
+    width: calc(100vw - 2rem);
+}
+
 .page-switch-buttons {
     display: flex;
     justify-content: center;

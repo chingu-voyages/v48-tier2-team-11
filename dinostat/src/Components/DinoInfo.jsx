@@ -5,22 +5,27 @@ import axios from 'axios';
 export default function DinoInfo() {
   const { dinoId } = useParams();
   const [dinoJson, setDinoJson] = useState({ id: 'Loading...', name: 'Loading...', description: 'Loading...' });
-
-  // Every time dinoInfo is rendered, call api by dinoId and set dinoJson with response
   useEffect(() => {
     axios.get(`https://chinguapi.onrender.com/dinosaurs/${dinoId}`).then((res) => {
       setDinoJson(res.data);
     });
+    console.log(dinoJson);
   }, [dinoId]);
 
-  // TODO: Replace this return block with a properly fleshed out component displaying all the info
-  // For now I'm just rendering the id, name and description as plain text to demonstrate.
-  // ~Yasir
   return (
-    <>
-      <div>{`Id: ${dinoJson.id}`}</div>
-      <div>{`Name: ${dinoJson.name}`}</div>
+    <section className="dinoInfo">
+      <h2 className="dinoInfo-header">{`${dinoJson.name}`}</h2>
+      <img src={dinoJson.imageSrc} alt={`${dinoJson.name}`} className="dinoInfo-img" />
       <div>{`Description: ${dinoJson.description}`}</div>
-    </>
+      <div>{`Length: ${dinoJson.length}m`}</div>
+      <div>{`Found In: ${dinoJson.foundIn}`}</div>
+      <div>{`Named by: ${dinoJson.namedBy}`}</div>
+      <div>{`Taxonomy: ${dinoJson.taxonomy}`}</div>
+      <div>{`Type of Dinosaur: ${dinoJson.typeOfDinosaur}`}</div>
+      <div>{`Species: ${dinoJson.typeSpecies}`}</div>
+      <div>{`Weight: ${dinoJson.weight}`}</div>
+      <div>{`When Lived: ${dinoJson.whenLived}`}</div>
+      <div>{`Diet: ${dinoJson.diet}`}</div>
+    </section>
   );
 }
