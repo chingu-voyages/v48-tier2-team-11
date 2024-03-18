@@ -24,12 +24,17 @@ export default function Header() {
 
       <div className="nav-links" style={{ display: isOpen ? 'block' : 'none' }}>
         <ul>
-          <li className="link-item"><Link to="/"> Home </Link></li>
-          <li className="link-item"><Link to="/dinosaurs"> Dinosaur List </Link></li>
-          <li className="link-item"><Link to="/charts"> Charts </Link></li>
+          <li className="link-item">
+            <Link to="/"> Home </Link>
+          </li>
+          <li className="link-item">
+            <Link to="/dinosaurs"> Dinosaur List </Link>
+          </li>
+          <li className="link-item">
+            <Link to="/charts"> Charts </Link>
+          </li>
         </ul>
       </div>
-
     </div>
   );
 }
