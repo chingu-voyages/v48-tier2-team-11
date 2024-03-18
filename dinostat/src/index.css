@@ -112,6 +112,14 @@ b {
     text-transform: capitalize;
 }
 
+.search{
+    padding: 0.75rem;
+    border: none;
+    box-shadow:  0 1px 5px rgba(0, 0, 0, 0.284);
+    margin: 0.75rem 1rem;
+    width: calc(100vw - 3.5rem);
+}
+
 
 .page-switch-buttons {
     display: flex;
@@ -134,5 +142,10 @@ b {
     .dino-list-item{
         width: 40%;
         justify-content: center;
+    }
+
+    .search{
+        width: 20%;
+        margin-inline: 8rem;
     }
 }
