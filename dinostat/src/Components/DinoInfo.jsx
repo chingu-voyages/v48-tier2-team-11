@@ -1,26 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import missing from '../../public/missing.png';
 
 export default function DinoInfo() {
   const { dinoId } = useParams();
   const [dinoJson, setDinoJson] = useState({ id: 'Loading...', name: 'Loading...', description: 'Loading...' });
-
-  // Every time dinoInfo is rendered, call api by dinoId and set dinoJson with response
   useEffect(() => {
     axios.get(`https://chinguapi.onrender.com/dinosaurs/${dinoId}`).then((res) => {
       setDinoJson(res.data);
     });
+    console.log(dinoJson);
   }, [dinoId]);
 
-  // TODO: Replace this return block with a properly fleshed out component displaying all the info
-  // For now I'm just rendering the id, name and description as plain text to demonstrate.
-  // ~Yasir
+  const camelToFlat=(camel)=>{
+    const camelCase = camel.toString().replace(/([a-z])([A-Z])/g, '$1 $2');
+    return camelCase;
+  };
+
+  const keys = Object.keys(dinoJson).splice(3);
+
   return (
-    <>
-      <div>{`Id: ${dinoJson.id}`}</div>
-      <div>{`Name: ${dinoJson.name}`}</div>
-      <div>{`Description: ${dinoJson.description}`}</div>
-    </>
+    <section className="dinoInfo">
+      <h2 className="dinoInfo-header">{`${dinoJson.name}`}</h2>
+      <picture className="dinoInfo-img">
+        <img src={dinoJson.imageSrc === 'N/A' ? missing : dinoJson.imageSrc} alt={`${dinoJson.name}`} />
+      </picture>
+      <div className="dinoInfo-content">
+       {keys.map((key)=> {
+        return (
+          <div><b>{camelToFlat(key)}</b>: {dinoJson[key]}</div>
+         );
+       })}
+      </div>
+
+    </section>
   );
 }

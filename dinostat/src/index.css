@@ -81,6 +81,38 @@
     padding: 0.5rem;
 }
 
+.dinoInfo{
+    width: calc(100vw - 1rem);
+    display: flex;
+    flex-direction: column;
+    gap:3px;
+    padding: 1rem;
+    align-items: center;
+    margin-inline:auto;
+}
+
+.dinoInfo-header{
+    align-self: center;
+    text-transform: uppercase;
+}
+
+.dinoInfo-img {
+    margin-inline: 0.25rem;
+}
+.dinoInfo-img > img {
+    width: calc(100% - 0.25rem);
+    margin-inline: 0.25rem;
+}
+.dinoInfo-content{
+    padding: 0.5rem;
+    max-width: calc(100vw - 2rem);
+    background-color: lightgray;
+}
+b {
+    text-transform: capitalize;
+}
+
+
 .page-switch-buttons {
     display: flex;
     justify-content: center;
