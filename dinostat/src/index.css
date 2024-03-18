@@ -71,10 +71,16 @@
     text-decoration: none;
 }
 
+.detail-div {
+    height: 232px;
+}
+
 .dinoCard-description{
     color: grey;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
+    height: 40%;
+    overflow: hidden;
 }
 
 .moreInfo{
@@ -123,7 +129,7 @@ b {
     padding: 1rem;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 1250px) {
     .dino-list {
         display: flex;
         flex-wrap: wrap;
@@ -134,5 +140,17 @@ b {
     .dino-list-item{
         width: 40%;
         justify-content: center;
+    }
+}
+
+@media (max-width: 520px) {
+    .dinoCard {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .dinoCard-title, .dinoCard-description, .moreInfo-div {
+        text-align: center;
     }
 }
