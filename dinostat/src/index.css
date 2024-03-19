@@ -10,10 +10,11 @@
 
 .header {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     background-color: var(--header-color);
-    padding: 1rem;
+    padding: 1rem 0rem;
+    height: 60px;
 }
 
 .menu {
@@ -29,12 +30,12 @@
 
 .nav-links {
     position: absolute;
+    top: 60px;
     z-index: 99;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding: 1rem;
     background-color: var(--header-color);
 }
 
@@ -99,19 +100,21 @@
 .dinoInfo-img {
     margin-inline: 0.25rem;
 }
+
 .dinoInfo-img > img {
     width: calc(100% - 0.25rem);
     margin-inline: 0.25rem;
 }
+
 .dinoInfo-content{
     padding: 0.5rem;
     max-width: calc(100vw - 2rem);
     background-color: lightgray;
 }
+
 b {
     text-transform: capitalize;
 }
-
 
 .page-switch-buttons {
     display: flex;
@@ -123,16 +126,39 @@ b {
     padding: 1rem;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 670px) {
     .dino-list {
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap: wrap; /* Force container stacking */
         width: 100%;
         justify-content: center;
     }
     
     .dino-list-item{
-        width: 40%;
+        width: 40%; /* 2 column display */
         justify-content: center;
+    }
+
+    .menu {
+        display: none; /* Hide menu button for large screens */
+    }
+
+    .nav-list {
+        display: flex;
+        flex-direction: row; /* Horizontal display for large screens */
+    }
+
+    .app-name {
+        width: 40%; /* Place app name in the side */
+    }
+
+    .nav-links {
+        position: relative;
+        top: 0;
+        width: 40%; /* Place nav links in the side */
+    }
+
+    .link-item {
+        padding: 0rem 1rem; /* Add space between links */
     }
 }
