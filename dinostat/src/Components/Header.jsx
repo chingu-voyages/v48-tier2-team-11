@@ -4,6 +4,13 @@ import { Link } from 'react-router-dom';
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const navDisplay = () => {
+    if (isOpen || window.innerWidth > 768) {
+      return 'block';
+    }
+    return 'none';
+  };
+
   const toggle = () => {
     setIsOpen(!isOpen);
   };
@@ -22,7 +29,7 @@ export default function Header() {
         </div>
       </div>
 
-      <div className="nav-links" style={{ display: isOpen ? 'block' : 'none' }}>
+      <div className="nav-links" style={{ display: navDisplay() }}>
         <ul>
           <li className="link-item"><Link to="/"> Home </Link></li>
           <li className="link-item"><Link to="/dinosaurs"> Dinosaur List </Link></li>
