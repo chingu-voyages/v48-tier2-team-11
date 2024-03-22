@@ -47,7 +47,9 @@ export default function DinoList() {
 
   // Dynamically sets the dinoDisplayList based on the current page number
   useEffect(() => {
-    setDinoDisplayList(dinoJsonList.slice((pageCounter - 1) * 8, pageCounter * 8));
+    setDinoDisplayList(
+      dinoJsonList.slice((pageCounter - 1) * 8, pageCounter * 8),
+    );
   }, [pageCounter, dinoJsonList]);
 
   return (
@@ -55,13 +57,17 @@ export default function DinoList() {
       <div className="dino-list">
         {dinoDisplayList.map((x) => (
           <div key={x.id} className="dino-list-item">
-            <DinoCard id={x.id} img={x.imageSrc} title={x.name} description={x.description} />
+            <DinoCard
+              id={x.id}
+              img={x.imageSrc}
+              title={x.name}
+              description={x.description}
+            />
           </div>
         ))}
       </div>
 
       <div className="page-switch-buttons">
-
         <button type="button" onClick={handleDownClick}>
           &lt;
         </button>
@@ -75,9 +81,7 @@ export default function DinoList() {
         <button type="button" onClick={handleUpClick}>
           &gt;
         </button>
-
       </div>
-
     </div>
   );
 }
