@@ -122,6 +122,12 @@ b {
   padding: 1rem;
 }
 
+.chartList{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+
 @media (min-width: 600px) {
   .dino-list {
     display: flex;
