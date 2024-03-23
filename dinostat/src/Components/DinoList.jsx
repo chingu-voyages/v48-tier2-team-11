@@ -14,12 +14,15 @@ export default function DinoList() {
       setDinoJsonList(res.data);
     });
   }, []);
-  const filteredList = search === '' ? dinoJsonList : dinoJsonList.filter((dino) => dino.name.toLowerCase().includes(search.toLowerCase()))
 
   // Handles the next page button click
   const handleUpClick = () => {
     // Prevent the pageCounter from going over the total number of pages
-    if (filteredList.length / 8 < pageCounter) return;
+    if (dinoJsonList.filter((dino) => (
+      dino?.name?.toLowerCase().includes(search.toLowerCase())
+    )).length / 8 < pageCounter) {
+      return;
+    }
     setPageCounter(pageCounter + 1);
   };
 
@@ -30,19 +33,29 @@ export default function DinoList() {
     setPageCounter(pageCounter - 1);
   };
 
-
   // Dynamically sets the dinoDisplayList based on the current page number
   useEffect(() => {
-    setDinoDisplayList(
-      filteredList.slice((pageCounter - 1) * 8, pageCounter * 8),
-    );
-  }, [pageCounter, dinoJsonList]);
+    if (pageCounter > dinoJsonList.filter((dino) => (
+      dino?.name?.toLowerCase().includes(search.toLowerCase())
+    )).length / 8) setPageCounter(1);
+    if (search === '') {
+      setDinoDisplayList(
+        dinoJsonList.slice((pageCounter - 1) * 8, pageCounter * 8),
+      );
+    } else {
+      setDinoDisplayList(
+        dinoJsonList.filter((dino) => (
+          dino?.name?.toLowerCase().includes(search.toLowerCase())
+        )).slice((pageCounter - 1) * 8, pageCounter * 8),
+      );
+    }
+  }, [pageCounter, dinoJsonList, search]);
 
   return (
     <div>
-      <input type="text" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)} className="search"/>
+      <input type="text" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)} className="search" />
       <div className="dino-list">
-        {dinoDisplayList.map((x) => (
+        {dinoDisplayList.length === 0 ? 'No Results Found' : dinoDisplayList.map((x) => (
           <div key={x.id} className="dino-list-item">
             <DinoCard
               id={x.id}
@@ -62,7 +75,9 @@ export default function DinoList() {
         <div>
           {pageCounter}
           /
-          {Math.ceil(filteredList.length / 8)}
+          {Math.ceil(dinoJsonList.filter((dino) => (
+            dino?.name?.toLowerCase().includes(search.toLowerCase())
+          )).length / 8) || 1}
         </div>
 
         <button type="button" onClick={handleUpClick}>
