@@ -3,25 +3,26 @@ import axios from 'axios';
 import DinoCard from './DinoCard';
 
 export default function DinoList() {
-  // Holds response data from the api to be fed to each dinosaur card.
-  const [dinoJsonList, setDinoJsonList] = useState([]);
-  const [totalDinos, setTotalDinos] = useState(0);
+  const [dinoJsonList, setDinoJsonList] = useState([]); // holds the json from the api
+  const [pageCounter, setPageCounter] = useState(1); // keeps track of current page number
+  const [search, setSearch] = useState(''); // keeps track of the search bar
+  const [dinoDisplayList, setDinoDisplayList] = useState([]); // sets the number of dinosaurs
 
   // Every time dinoList is rendered, call api and set JsonList based on incoming response data
   useEffect(() => {
     axios.get('https://chinguapi.onrender.com/dinosaurs').then((res) => {
       setDinoJsonList(res.data);
-      setTotalDinos(res.data.length);
     });
   }, []);
-
-  // Keeps track of the current page number
-  const [pageCounter, setPageCounter] = useState(1);
 
   // Handles the next page button click
   const handleUpClick = () => {
     // Prevent the pageCounter from going over the total number of pages
-    if (totalDinos / 8 < pageCounter) return;
+    if (dinoJsonList.filter((dino) => (
+      dino?.name?.toLowerCase().includes(search.toLowerCase())
+    )).length / 8 < pageCounter) {
+      return;
+    }
     setPageCounter(pageCounter + 1);
   };
 
@@ -29,33 +30,32 @@ export default function DinoList() {
   const handleDownClick = () => {
     // Prevent the pageCounter from going to 0
     if (pageCounter === 1) return;
-
     setPageCounter(pageCounter - 1);
   };
 
-  /*
-    TODO: Replace this return block with a card component
-    For now I'm just rendering the id as a link to each info page
-    ~Yasir
-  */
-
-  /*
-    Contains 8 dinosaurs to be displayed on the current page. So we don't need to change the
-    dinoJsonList state every time the page changes.
-  */
-  const [dinoDisplayList, setDinoDisplayList] = useState([]);
-
   // Dynamically sets the dinoDisplayList based on the current page number
   useEffect(() => {
-    setDinoDisplayList(
-      dinoJsonList.slice((pageCounter - 1) * 8, pageCounter * 8),
-    );
-  }, [pageCounter, dinoJsonList]);
+    if (pageCounter > dinoJsonList.filter((dino) => (
+      dino?.name?.toLowerCase().includes(search.toLowerCase())
+    )).length / 8) setPageCounter(1);
+    if (search === '') {
+      setDinoDisplayList(
+        dinoJsonList.slice((pageCounter - 1) * 8, pageCounter * 8),
+      );
+    } else {
+      setDinoDisplayList(
+        dinoJsonList.filter((dino) => (
+          dino?.name?.toLowerCase().includes(search.toLowerCase())
+        )).slice((pageCounter - 1) * 8, pageCounter * 8),
+      );
+    }
+  }, [pageCounter, dinoJsonList, search]);
 
   return (
     <div>
+      <input type="text" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)} className="search" />
       <div className="dino-list">
-        {dinoDisplayList.map((x) => (
+        {dinoDisplayList.length === 0 ? 'No Results Found' : dinoDisplayList.map((x) => (
           <div key={x.id} className="dino-list-item">
             <DinoCard
               id={x.id}
@@ -75,7 +75,9 @@ export default function DinoList() {
         <div>
           {pageCounter}
           /
-          {Math.ceil(totalDinos / 8)}
+          {Math.ceil(dinoJsonList.filter((dino) => (
+            dino?.name?.toLowerCase().includes(search.toLowerCase())
+          )).length / 8) || 1}
         </div>
 
         <button type="button" onClick={handleUpClick}>
