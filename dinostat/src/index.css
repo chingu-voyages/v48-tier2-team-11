@@ -131,6 +131,14 @@ b {
     grid-template-columns: 1fr 1fr;
 }
 
+.search{
+  padding: 0.75rem;
+  border: none;
+  box-shadow:  0 1px 5px rgba(0, 0, 0, 0.284);
+  margin: 0.75rem 1rem;
+  width: calc(100vw - 3.5rem);
+}
+
 
 @media (min-width: 670px) {
     .dino-list {
@@ -167,4 +175,9 @@ b {
     .link-item {
         padding: 0rem 1rem; /* Add space between links */
     }
+    
+    .search{
+      width: 20%;
+      margin-inline: 8rem;
+  }
 }
