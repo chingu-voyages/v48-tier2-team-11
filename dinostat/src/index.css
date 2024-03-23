@@ -142,7 +142,7 @@ b {
 }
 
 
-@media (min-width: 600px) {
+@media (min-width: 1250px) {
   .dino-list {
     display: flex;
     flex-wrap: wrap;
