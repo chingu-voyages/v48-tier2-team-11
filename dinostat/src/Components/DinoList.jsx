@@ -3,8 +3,10 @@ import axios from 'axios';
 import DinoCard from './DinoCard';
 
 export default function DinoList() {
-  // Holds response data from the api to be fed to each dinosaur card.
-  const [dinoJsonList, setDinoJsonList] = useState([]);
+  const [dinoJsonList, setDinoJsonList] = useState([]); // holds the json from the api
+  const [pageCounter, setPageCounter] = useState(1); // keeps track of current page number
+  const [search, setSearch] = useState(''); // keeps track of the search bar
+  const [dinoDisplayList, setDinoDisplayList] = useState([]); // sets the number of dinosaurs
 
   // Every time dinoList is rendered, call api and set JsonList based on incoming response data
   useEffect(() => {
@@ -12,10 +14,6 @@ export default function DinoList() {
       setDinoJsonList(res.data);
     });
   }, []);
-
-  // Keeps track of the current page number
-  const [pageCounter, setPageCounter] = useState(1);
-  const [search, setSearch] = useState('');
   const filteredList = search === '' ? dinoJsonList : dinoJsonList.filter((dino) => dino.name.toLowerCase().includes(search.toLowerCase()))
 
   // Handles the next page button click
@@ -29,16 +27,14 @@ export default function DinoList() {
   const handleDownClick = () => {
     // Prevent the pageCounter from going to 0
     if (pageCounter === 1) return;
-
     setPageCounter(pageCounter - 1);
   };
 
-  const [dinoDisplayList, setDinoDisplayList] = useState([]);
 
   // Dynamically sets the dinoDisplayList based on the current page number
   useEffect(() => {
     setDinoDisplayList(
-      dinoJsonList.slice((pageCounter - 1) * 8, pageCounter * 8),
+      filteredList.slice((pageCounter - 1) * 8, pageCounter * 8),
     );
   }, [pageCounter, dinoJsonList]);
 
