@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import missing from '../../public/missing.png';
+import Map from './Map';
 
 export default function DinoInfo() {
   const { dinoId } = useParams();
@@ -43,6 +44,7 @@ export default function DinoInfo() {
           </div>
         ))}
       </div>
+      <Map placeName={dinoJson.foundIn} />
     </section>
   );
 }
