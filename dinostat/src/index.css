@@ -71,10 +71,16 @@
   text-decoration: none;
 }
 
-.dinoCard-description {
-  color: grey;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+.detail-div {
+    height: 232px;
+}
+
+.dinoCard-description{
+    color: grey;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    height: 40%;
+    overflow: hidden;
 }
 
 .moreInfo {
@@ -140,7 +146,7 @@ b {
 }
 
 
-@media (min-width: 670px) {
+@media (min-width: 1250px) {
     .dino-list {
         display: flex;
         flex-wrap: wrap; /* Force container stacking */
@@ -180,4 +186,16 @@ b {
       width: 20%;
       margin-inline: 8rem;
   }
+}
+
+@media (max-width: 520px) {
+    .dinoCard {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .dinoCard-title, .dinoCard-description, .moreInfo-div {
+        text-align: center;
+    }
 }
