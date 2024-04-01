@@ -6,6 +6,8 @@ export default function DinoList() {
   const [dinoJsonList, setDinoJsonList] = useState([]); // holds the json from the api
   const [pageCounter, setPageCounter] = useState(1); // keeps track of current page number
   const [search, setSearch] = useState(''); // keeps track of the search bar
+  const [filterKey, setFilterKey] = useState([]);
+  const [filterSuggestion, setFilterSuggesstion] = useState([]);
   const [dinoDisplayList, setDinoDisplayList] = useState([]); // sets the number of dinosaurs
 
   // Every time dinoList is rendered, call api and set JsonList based on incoming response data
@@ -51,9 +53,43 @@ export default function DinoList() {
     }
   }, [pageCounter, dinoJsonList, search]);
 
+  const searchList = ['typeOfDinosaur', 'diet', 'whenLived', 'foundIn', 'typeSpecies'];
+
+  useEffect(() => {
+    const filteredList = [];
+
+    // Add the matching key, value pairs to filtered list *avoid duplicates
+    dinoJsonList.forEach((dino) => (
+      searchList.some((key) => {
+        if (dino[key]?.toLowerCase().includes(filterKey.toLowerCase())) {
+          if (!filteredList.some((item) => item.key === key && item.value === dino[key])) {
+            filteredList.push({ key, value: dino[key] });
+          }
+        }
+      })
+    ));
+
+    setFilterSuggesstion(filteredList);
+  }, [filterKey]);
+
   return (
     <div>
-      <input type="text" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)} className="search" />
+      <div className="input-bars">
+        <input type="text" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)} className="search" />
+
+        <select>
+          {filterSuggestion.map((dino) => (
+            <option key={dino.key + dino.value} value={dino.key + dino.value}>
+              {`${dino.key} ${dino.value}`}
+            </option>
+          ))}
+        </select>
+
+        <div className="filter-item" />
+
+        <input type="text" placeholder="Type for filters" onChange={(e) => setFilterKey(e.target.value)} className="filter" />
+      </div>
+
       <div className="dino-list">
         {dinoDisplayList.length === 0 ? 'No Results Found' : dinoDisplayList.map((x) => (
           <div key={x.id} className="dino-list-item">
