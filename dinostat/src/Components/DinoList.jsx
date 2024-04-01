@@ -8,6 +8,8 @@ export default function DinoList() {
   const [search, setSearch] = useState(''); // keeps track of the search bar
   const [filterKey, setFilterKey] = useState([]);
   const [filterSuggestion, setFilterSuggesstion] = useState([]);
+  const [filterSelect, setFilterSelect] = useState('');
+  const [selectedList, setSelectedList] = useState([]);
   const [dinoDisplayList, setDinoDisplayList] = useState([]); // sets the number of dinosaurs
 
   // Every time dinoList is rendered, call api and set JsonList based on incoming response data
@@ -77,25 +79,34 @@ export default function DinoList() {
     setFilterSuggesstion(filteredList);
   }, [filterKey]);
 
+  useEffect(() => {
+    setSelectedList([...selectedList, filterSelect]);
+  }, [filterSelect]);
+
   return (
     <div>
       <div className="input-bars">
         <input type="text" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)} className="search" />
 
-        <select value="asdf" size="3" onChange={() => null}>
-          {filterSuggestion.length === 0 ? (
-            null
-          ) : (
-            filterSuggestion.map((dino) => (
-              <option key={dino.key + dino.value} value={dino.key + dino.value}>
-                {`${dino.key} ${dino.value}`}
-              </option>
-            )))}
-        </select>
+        <div className="filter-drop">
+          <input type="text" placeholder="Type for filters" onChange={(e) => setFilterKey(e.target.value)} className="filter" />
+
+          {filterSuggestion.length > 0 ? (
+            <select value={filterSelect} size="3" onChange={(e) => setFilterSelect(e.target.value)}>
+              {filterSuggestion.length === 0 ? (
+                null
+              ) : (
+                filterSuggestion.map((dino) => (
+                  <option key={dino.key + dino.value} value={dino.key + dino.value}>
+                    {`${dino.key} ${dino.value}`}
+                  </option>
+                )))}
+            </select>
+          ) : null }
+        </div>
 
         <div className="filter-item" />
 
-        <input type="text" placeholder="Type for filters" onChange={(e) => setFilterKey(e.target.value)} className="filter" />
       </div>
 
       <div className="dino-list">
