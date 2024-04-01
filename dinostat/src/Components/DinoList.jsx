@@ -58,6 +58,11 @@ export default function DinoList() {
   useEffect(() => {
     const filteredList = [];
 
+    if (filterKey === '') {
+      setFilterSuggesstion([]);
+      return;
+    }
+
     // Add the matching key, value pairs to filtered list *avoid duplicates
     dinoJsonList.forEach((dino) => (
       searchList.some((key) => {
@@ -77,12 +82,15 @@ export default function DinoList() {
       <div className="input-bars">
         <input type="text" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)} className="search" />
 
-        <select>
-          {filterSuggestion.map((dino) => (
-            <option key={dino.key + dino.value} value={dino.key + dino.value}>
-              {`${dino.key} ${dino.value}`}
-            </option>
-          ))}
+        <select value="asdf" size="3" onChange={() => null}>
+          {filterSuggestion.length === 0 ? (
+            null
+          ) : (
+            filterSuggestion.map((dino) => (
+              <option key={dino.key + dino.value} value={dino.key + dino.value}>
+                {`${dino.key} ${dino.value}`}
+              </option>
+            )))}
         </select>
 
         <div className="filter-item" />
