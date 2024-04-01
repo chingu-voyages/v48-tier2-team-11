@@ -69,10 +69,16 @@ export default function DinoList() {
     dinoJsonList.forEach((dino) => (
       searchList.some((key) => {
         if (dino[key]?.toLowerCase().includes(filterKey.toLowerCase())) {
-          if (!filteredList.some((item) => item.key === key && item.value === dino[key])) {
-            filteredList.push({ key, value: dino[key] });
+          let result = dino[key];
+          if (key === 'whenLived') {
+            const keyee = result.split(',');
+            [result] = keyee;
+          }
+          if (!filteredList.some((item) => item.key === key && item.value === result)) {
+            filteredList.push({ key, value: result });
           }
         }
+        return null;
       })
     ));
 
@@ -105,8 +111,14 @@ export default function DinoList() {
           ) : null }
         </div>
 
-        <div className="filter-item" />
+      </div>
 
+      <div className="filter-selections">
+        {selectedList.map((item) => (
+          <div key={item} className="filter-item">
+            {item}
+          </div>
+        ))}
       </div>
 
       <div className="dino-list">
