@@ -177,6 +177,11 @@ b {
   width: 25%;
 }
 
+.filter-selections{
+  display: flex;
+  gap: 0.5rem;
+}
+
 @media (min-width: 1250px) {
     .dino-list {
         display: flex;
