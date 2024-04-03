@@ -8,14 +8,16 @@ export default function DinoList() {
   const [search, setSearch] = useState(''); // keeps track of the search bar
   const [filterKey, setFilterKey] = useState([]);
   const [filterSuggestion, setFilterSuggesstion] = useState([]);
-  const [filterSelect, setFilterSelect] = useState('');
+  const [filterSelect, setFilterSelect] = useState();
   const [selectedList, setSelectedList] = useState([]);
   const [dinoDisplayList, setDinoDisplayList] = useState([]); // sets the number of dinosaurs
+  const [origDinoJson, setOrigDinoJson] = useState([]);
 
   // Every time dinoList is rendered, call api and set JsonList based on incoming response data
   useEffect(() => {
     axios.get('https://chinguapi.onrender.com/dinosaurs').then((res) => {
       setDinoJsonList(res.data);
+      setOrigDinoJson(res.data);
     });
   }, []);
 
@@ -86,17 +88,25 @@ export default function DinoList() {
   }, [filterKey]);
 
   useEffect(() => {
+    if (filterSelect === undefined) return;
     if (!selectedList.some((item) => item === filterSelect)) {
       setSelectedList([...selectedList, filterSelect]);
     }
   }, [filterSelect]);
 
   useEffect(() => {
+    if (selectedList.length === 0) return;
     selectedList.forEach((selection) => {
       const selectionValue = selection.split(': ')[1];
       setDinoJsonList(dinoJsonList.filter((dino) => Object.values(dino).includes(selectionValue)));
     });
   }, [selectedList]);
+
+  function removeFilter(item) {
+    setDinoJsonList(origDinoJson);
+
+    setSelectedList(selectedList.filter((dino) => dino !== item));
+  }
 
   return (
     <div>
@@ -107,7 +117,7 @@ export default function DinoList() {
           <input type="text" placeholder="Type for filters" onChange={(e) => setFilterKey(e.target.value)} className="filter" />
 
           {filterSuggestion.length > 0 ? (
-            <select value={filterSelect} size="3" onChange={(e) => setFilterSelect(e.target.value)}>
+            <select size="3" onChange={(e) => setFilterSelect(e.target.value)}>
               {filterSuggestion.length === 0 ? (
                 null
               ) : (
@@ -124,7 +134,8 @@ export default function DinoList() {
 
       <div className="filter-selections">
         {selectedList.map((item) => (
-          <div key={item} className="filter-item">
+
+          <div key={item} className="filter-item" onClick={() => removeFilter(item)}>
             {item}
           </div>
         ))}
