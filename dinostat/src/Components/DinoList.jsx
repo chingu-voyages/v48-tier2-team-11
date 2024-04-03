@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from 'react';
 import axios from 'axios';
 import DinoCard from './DinoCard';
+import Dropdown from './DropDown';
 
 export default function DinoList() {
   const [dinoJsonList, setDinoJsonList] = useState([]); // holds the json from the api
@@ -108,27 +109,19 @@ export default function DinoList() {
     setSelectedList(selectedList.filter((dino) => dino !== item));
   }
 
-  const [dropOpen, setDropOpen] = useState(false);
-
   return (
     <div>
       <div className="input-bars">
         <input type="text" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)} className="search" />
 
         <div className="filter-drop">
-          <input type="text" placeholder="Type for filters" onChange={(e) => setFilterKey(e.target.value)} className="filter" onBlur={() => setDropOpen(false)} onFocus={() => setDropOpen(true)} />
+          <input type="text" placeholder="Type for filters" onChange={(e) => setFilterKey(e.target.value)} className="filter" />
 
           {filterSuggestion.length > 0 ? (
-            <select size="3" onChange={(e) => setFilterSelect(e.target.value)} style={{ display: (dropOpen) ? 'block' : 'none' }} onBlur={() => setDropOpen(false)} onFocus={() => setDropOpen(true)}>
-              {(filterSuggestion.length === 0) ? (
-                null
-              ) : (
-                filterSuggestion.map((dino) => (
-                  <option key={dino.key + dino.value} value={`${dino.key}: ${dino.value}`}>
-                    {`${dino.key} ${dino.value}`}
-                  </option>
-                )))}
-            </select>
+            <Dropdown
+              filterSuggestion={filterSuggestion}
+              setFilterSelect={setFilterSelect}
+            />
           ) : null }
         </div>
 
