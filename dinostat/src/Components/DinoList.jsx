@@ -86,8 +86,17 @@ export default function DinoList() {
   }, [filterKey]);
 
   useEffect(() => {
-    setSelectedList([...selectedList, filterSelect]);
+    if (!selectedList.some((item) => item === filterSelect)) {
+      setSelectedList([...selectedList, filterSelect]);
+    }
   }, [filterSelect]);
+
+  useEffect(() => {
+    selectedList.forEach((selection) => {
+      const selectionValue = selection.split(': ')[1];
+      setDinoJsonList(dinoJsonList.filter((dino) => Object.values(dino).includes(selectionValue)));
+    });
+  }, [selectedList]);
 
   return (
     <div>
@@ -103,7 +112,7 @@ export default function DinoList() {
                 null
               ) : (
                 filterSuggestion.map((dino) => (
-                  <option key={dino.key + dino.value} value={dino.key + dino.value}>
+                  <option key={dino.key + dino.value} value={`${dino.key}: ${dino.value}`}>
                     {`${dino.key} ${dino.value}`}
                   </option>
                 )))}
