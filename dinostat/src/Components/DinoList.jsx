@@ -108,17 +108,19 @@ export default function DinoList() {
     setSelectedList(selectedList.filter((dino) => dino !== item));
   }
 
+  const [dropOpen, setDropOpen] = useState(false);
+
   return (
     <div>
       <div className="input-bars">
         <input type="text" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)} className="search" />
 
         <div className="filter-drop">
-          <input type="text" placeholder="Type for filters" onChange={(e) => setFilterKey(e.target.value)} className="filter" />
+          <input type="text" placeholder="Type for filters" onChange={(e) => setFilterKey(e.target.value)} className="filter" onBlur={() => setDropOpen(false)} onFocus={() => setDropOpen(true)} />
 
           {filterSuggestion.length > 0 ? (
-            <select size="3" onChange={(e) => setFilterSelect(e.target.value)}>
-              {filterSuggestion.length === 0 ? (
+            <select size="3" onChange={(e) => setFilterSelect(e.target.value)} style={{ display: (dropOpen) ? 'block' : 'none' }} onBlur={() => setDropOpen(false)} onFocus={() => setDropOpen(true)}>
+              {(filterSuggestion.length === 0) ? (
                 null
               ) : (
                 filterSuggestion.map((dino) => (
@@ -135,9 +137,18 @@ export default function DinoList() {
       <div className="filter-selections">
         {selectedList.map((item) => (
 
-          <div key={item} className="filter-item" onClick={() => removeFilter(item)}>
-            {item}
+          <div className="filter-widget">
+
+            <div key={item} className="filter-item">
+              {item}
+            </div>
+
+            <button type="button" onClick={() => removeFilter(item)}>
+              X
+            </button>
+
           </div>
+
         ))}
       </div>
 
