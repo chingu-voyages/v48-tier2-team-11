@@ -194,6 +194,15 @@ b {
   background-color: lightgray;
 }
 
+.filter-overlay{
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 99;
+
+}
+
 @media (min-width: 1250px) {
     .dino-list {
         display: flex;
