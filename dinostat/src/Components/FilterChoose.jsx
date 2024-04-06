@@ -1,7 +1,7 @@
 import { React, useEffect, useState } from 'react';
 import axios from 'axios';
 
-export default function FilterChoose() {
+export default function FilterChoose({ setFilterSelect }) {
   const [dinoJsonList, setDinoJsonList] = useState([]);
 
   useEffect(() => {
@@ -35,33 +35,33 @@ export default function FilterChoose() {
 
           <div className="dino-type">
             <h3>Type</h3>
-            {filterable.typeOfDinosaur.map((type) => (
-              <button type="button" key={type}>{type}</button>
+            {filterable.typeOfDinosaur.map((item) => (
+              <button type="button" key={item} onClick={() => setFilterSelect(item)}>{item}</button>
             ))}
           </div>
 
           <div className="dino-diet">
             <h3>Diet</h3>
-            {filterable.diet.map((type) => (
-              <button type="button" key={type}>{type}</button>
+            {filterable.diet.map((item) => (
+              <button type="button" key={item} onClick={() => setFilterSelect(item)}>{item}</button>
             ))}
           </div>
           <div className="dino-lived">
             <h3>Period</h3>
-            {filterable.whenLived.map((type) => (
-              <button type="button" key={type}>{type}</button>
+            {filterable.whenLived.map((item) => (
+              <button type="button" key={item} onClick={() => setFilterSelect(item)}>{item}</button>
             ))}
           </div>
           <div className="dino-country">
             <h3>Country</h3>
-            {filterable.foundIn.map((type) => (
-              <button type="button" key={type}>{type}</button>
+            {filterable.foundIn.map((item) => (
+              <button type="button" key={item} onClick={() => setFilterSelect(item)}>{item}</button>
             ))}
           </div>
           <div className="dino-species">
             <h3>Species</h3>
-            {filterable.typeSpecies.map((type) => (
-              <button type="button" key={type}>{type}</button>
+            {filterable.typeSpecies.map((item) => (
+              <button type="button" key={item} onClick={() => setFilterSelect(item)}>{item}</button>
             ))}
           </div>
 

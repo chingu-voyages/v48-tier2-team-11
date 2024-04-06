@@ -90,6 +90,7 @@ export default function DinoList() {
   }, [filterKey]);
 
   useEffect(() => {
+    console.log(filterSelect);
     if (filterSelect === undefined) return;
     if (!selectedList.some((item) => item === filterSelect)) {
       setSelectedList([...selectedList, filterSelect]);
@@ -121,7 +122,7 @@ export default function DinoList() {
           <input type="text" placeholder="Type for filters" onChange={(e) => setFilterKey(e.target.value)} className="filter" />
           <button type="button" onClick={() => setFilterChoose(true)}>Choose Filters</button>
 
-          {filterChoose ? (<FeatureChoose />) : null}
+          {filterChoose ? (<FeatureChoose setFilterSelect={setFilterSelect} />) : null}
 
           {filterSuggestion.length > 0 ? (
             <Dropdown
