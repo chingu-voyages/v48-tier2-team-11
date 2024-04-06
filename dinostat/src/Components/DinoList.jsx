@@ -2,6 +2,7 @@ import { React, useState, useEffect } from 'react';
 import axios from 'axios';
 import DinoCard from './DinoCard';
 import Dropdown from './DropDown';
+import FeatureChoose from './FilterChoose';
 
 export default function DinoList() {
   const [dinoJsonList, setDinoJsonList] = useState([]); // holds the json from the api
@@ -109,6 +110,8 @@ export default function DinoList() {
     setSelectedList(selectedList.filter((dino) => dino !== item));
   }
 
+  const [filterChoose, setFilterChoose] = useState(false);
+
   return (
     <div>
       <div className="input-bars">
@@ -116,6 +119,9 @@ export default function DinoList() {
 
         <div className="filter-drop">
           <input type="text" placeholder="Type for filters" onChange={(e) => setFilterKey(e.target.value)} className="filter" />
+          <button type="button" onClick={() => setFilterChoose(true)}>Choose Filters</button>
+
+          {filterChoose ? (<FeatureChoose />) : null}
 
           {filterSuggestion.length > 0 ? (
             <Dropdown
