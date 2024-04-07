@@ -2,7 +2,7 @@ import { React, useState, useEffect } from 'react';
 import axios from 'axios';
 import DinoCard from './DinoCard';
 import Dropdown from './DropDown';
-import FeatureChoose from './FilterChoose';
+import FilterChoose from './FilterChoose';
 
 export default function DinoList() {
   const [dinoJsonList, setDinoJsonList] = useState([]); // holds the json from the api
@@ -127,28 +127,34 @@ export default function DinoList() {
   return (
     <div>
       <div className="input-bars">
+
         <input type="text" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)} className="search" />
 
         <div className="filter-drop">
-          <input type="text" placeholder="Type for filters" onChange={(e) => setFilterKey(e.target.value)} className="filter" />
+          <div className="search-drop">
+            <input type="text" placeholder="Type for filters" onChange={(e) => setFilterKey(e.target.value)} className="filter" />
+
+            <div className="dropdown">
+              {filterSuggestion.length > 0 ? (
+                <Dropdown
+                  filterSuggestion={filterSuggestion}
+                  setFilterSelect={setFilterSelect}
+                />
+              ) : null }
+            </div>
+          </div>
           {filterChoose ? (
             <button key="close-filter" type="button" onClick={() => setFilterChoose(false)}>Close</button>
           )
             : <button key="choose-filter" type="button" onClick={() => setFilterChoose(true)}>Choose</button>}
+        </div>
 
-          <div>
-            {filterChoose ? (
-              <FeatureChoose
-                setFilterSelect={setFilterSelect}
-              />
-            ) : null}
-          </div>
-          {filterSuggestion.length > 0 ? (
-            <Dropdown
-              filterSuggestion={filterSuggestion}
+        <div>
+          {filterChoose ? (
+            <FilterChoose
               setFilterSelect={setFilterSelect}
             />
-          ) : null }
+          ) : null}
         </div>
 
       </div>
