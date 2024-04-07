@@ -5,7 +5,7 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   const navDisplay = () => {
-    if (isOpen || window.innerWidth > 768) {
+    if (isOpen || window.innerWidth > 1250) {
       return 'flex';
     }
     return 'none';
