@@ -43,7 +43,6 @@ export default function DinoList() {
 
   // Dynamically sets the dinoDisplayList based on the current page number
   useEffect(() => {
-    console.log(dinoJsonList);
     if (pageCounter > dinoJsonList.filter((dino) => (
       dino?.name?.toLowerCase().includes(search.toLowerCase())
     )).length / 8) setPageCounter(1);
@@ -91,7 +90,6 @@ export default function DinoList() {
   }, [filterKey]);
 
   useEffect(() => {
-    console.log(filterSelect);
     if (filterSelect === undefined) return;
     if (!selectedList.some((item) => item === filterSelect)) {
       setSelectedList([...selectedList, filterSelect]);
@@ -105,10 +103,10 @@ export default function DinoList() {
       let selectionValue = selection.split(': ')[1];
 
       if (selectionKey === 'whenLived') {
-        selectionValue = [selectionValue.split(',')[0]];
+        [selectionValue] = [selectionValue.split(',')[0]];
       }
       setDinoJsonList(dinoJsonList.map((dino) => {
-        dino.whenLived = dino.whenLived.split(',')[0];
+        [dino.whenLived] = [dino.whenLived.split(',')[0]];
         return dino;
       }));
 
