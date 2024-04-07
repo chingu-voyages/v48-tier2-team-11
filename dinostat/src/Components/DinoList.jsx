@@ -134,7 +134,7 @@ export default function DinoList() {
           {filterChoose ? (
             <button key="close-filter" type="button" onClick={() => setFilterChoose(false)}>Close</button>
           )
-            : <button type="button" onClick={() => setFilterChoose(true)}>Choose Filters</button>}
+            : <button key="choose-filter" type="button" onClick={() => setFilterChoose(true)}>Choose Filters</button>}
 
           <div>
             {filterChoose ? (
