@@ -145,6 +145,15 @@ b {
   width: calc(100vw - 3.5rem);
 }
 
+.day-dino{
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.day-dino-image{
+  width: 50%;
+  padding: 1rem;
+}
 
 @media (min-width: 1250px) {
     .dino-list {
@@ -185,7 +194,7 @@ b {
     .search{
       width: 20%;
       margin-inline: 8rem;
-  }
+    }
 }
 
 @media (max-width: 520px) {
@@ -197,5 +206,9 @@ b {
 
     .dinoCard-title, .dinoCard-description, .moreInfo-div {
         text-align: center;
+    }
+
+    .day-dino-image{
+      width: 100%;
     }
 }
