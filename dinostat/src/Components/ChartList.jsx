@@ -58,7 +58,6 @@ export default function ChartList() {
         <Pie className="pie" data={{ labels: ['Herbivore', 'Omnivore', 'Carnivore'], datasets: [{ label: 'Diet Type', data: dietData }] }} />
         <Doughnut className="pie" data={{ labels: ['Large Theropod', 'Small Theropod', 'Small Ornithischian', 'Sauropod', 'Prosauropod', 'Ceratopsian', 'Armoured Dinosaur', 'Large Ornithopod'], datasets: [{ label: 'Type of Dinosaur', data: typeData }] }} />
       </div>
-      <div>chart #2</div>
     </div>
   );
 }
