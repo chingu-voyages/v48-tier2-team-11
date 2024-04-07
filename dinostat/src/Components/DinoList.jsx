@@ -43,6 +43,7 @@ export default function DinoList() {
 
   // Dynamically sets the dinoDisplayList based on the current page number
   useEffect(() => {
+    console.log(dinoJsonList);
     if (pageCounter > dinoJsonList.filter((dino) => (
       dino?.name?.toLowerCase().includes(search.toLowerCase())
     )).length / 8) setPageCounter(1);
@@ -100,7 +101,17 @@ export default function DinoList() {
   useEffect(() => {
     if (selectedList.length === 0) return;
     selectedList.forEach((selection) => {
-      const selectionValue = selection.split(': ')[1];
+      const selectionKey = selection.split(': ')[0];
+      let selectionValue = selection.split(': ')[1];
+
+      if (selectionKey === 'whenLived') {
+        selectionValue = [selectionValue.split(',')[0]];
+      }
+      setDinoJsonList(dinoJsonList.map((dino) => {
+        dino.whenLived = dino.whenLived.split(',')[0];
+        return dino;
+      }));
+
       setDinoJsonList(dinoJsonList.filter((dino) => Object.values(dino).includes(selectionValue)));
     });
   }, [selectedList]);
@@ -120,10 +131,18 @@ export default function DinoList() {
 
         <div className="filter-drop">
           <input type="text" placeholder="Type for filters" onChange={(e) => setFilterKey(e.target.value)} className="filter" />
-          <button type="button" onClick={() => setFilterChoose(true)}>Choose Filters</button>
+          {filterChoose ? (
+            <button key="close-filter" type="button" onClick={() => setFilterChoose(false)}>Close</button>
+          )
+            : <button type="button" onClick={() => setFilterChoose(true)}>Choose Filters</button>}
 
-          {filterChoose ? (<FeatureChoose setFilterSelect={setFilterSelect} />) : null}
-
+          <div>
+            {filterChoose ? (
+              <FeatureChoose
+                setFilterSelect={setFilterSelect}
+              />
+            ) : null}
+          </div>
           {filterSuggestion.length > 0 ? (
             <Dropdown
               filterSuggestion={filterSuggestion}
