@@ -194,13 +194,31 @@ b {
   background-color: lightgray;
 }
 
+.filter-choose-header{
+  text-align: center;
+}
+
 .filter-overlay{
+  margin-top: 1rem;
   position: absolute;
-  width: 80%;
-  height: 80%;
+  right: 2rem;
+  width: 50%;
+  height: 50%;
+  overflow-y: scroll;
   background-color: rgba(0, 0, 0, 0.9);
   z-index: 99;
+}
 
+.filter-choose{
+  padding: 1rem
+
+}
+
+.filter-overlay button{
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border: none;
+  background-color: lightgray;
 }
 
 @media (min-width: 1250px) {
@@ -254,5 +272,10 @@ b {
 
     .dinoCard-title, .dinoCard-description, .moreInfo-div {
         text-align: center;
+    }
+    .filter-overlay{
+      width: 100%;
+      height: 100%;
+      right: 0;
     }
 }
