@@ -163,6 +163,7 @@ b {
   height: 2.5rem;
 }
 
+
 .filter-drop{
   display: flex;
   width: 50%;
@@ -236,6 +237,16 @@ b {
 
 .filter-choose button{
   width: fit-content;
+
+.day-dino{
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.day-dino-image{
+  width: 50%;
+  padding: 1rem;
+
 }
 
 @media (min-width: 1250px) {
@@ -277,7 +288,7 @@ b {
     .search{
       width: 20%;
       margin-inline: 8rem;
-  }
+    }
 }
 
 @media (max-width: 520px) {
@@ -290,6 +301,7 @@ b {
     .dinoCard-title, .dinoCard-description, .moreInfo-div {
         text-align: center;
     }
+
     .filter-overlay{
       width: 100%;
       height: 100%;
@@ -313,5 +325,10 @@ b {
     .filter-drop button {
       width: 20%;
       height: 2.5rem;
+
+
+    .day-dino-image{
+      width: 100%;
+
     }
 }
