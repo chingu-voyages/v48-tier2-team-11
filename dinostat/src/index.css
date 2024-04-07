@@ -174,8 +174,13 @@ b {
 
 .filter-drop{
   display: flex;
-  flex-direction: column;
-  width: 25%;
+  /* flex-direction: column; */
+  width: 50%;
+}
+
+.filter-drop button{
+  width: 30%;
+  margin: 0.75rem ;
 }
 
 .filter-selections{
