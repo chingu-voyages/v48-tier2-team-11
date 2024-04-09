@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import missing from '../../public/missing.png';
+import Map from './Map';
 
 export default function DinoInfo() {
   const { dinoId } = useParams();
@@ -42,6 +43,17 @@ export default function DinoInfo() {
             {dinoJson[key]}
           </div>
         ))}
+      </div>
+      <Map placeName={dinoJson.foundIn} />
+
+      <div className="page-switch-buttons">
+        <Link to={`/dinosaurs/${dinoJson.id === 1 ? 316 : dinoJson.id - 1}`}>
+          <button type="button">&lt;</button>
+        </Link>
+
+        <Link to={`/dinosaurs/${dinoJson.id === 316 ? 1 : dinoJson.id + 1}`}>
+          <button type="button">&gt;</button>
+        </Link>
       </div>
     </section>
   );
