@@ -1,42 +1,45 @@
-# voyage-tasks
+## DinoStat
+DinoStat is a react web application that shows information about dinosaurs with interactive maps and graphs.
 
-Your project's `readme` is as important to success as your code. For
-this reason you should put as much care into its creation and maintenance
-as you would any other component of the application.
+The project is a part of the [Chingu](https://www.chingu.io/) voyage 48 program.
 
-If you are unsure of what should go into the `readme` let this article,
-written by an experienced Chingu, be your starting point -
-[Keys to a well written README](https://tinyurl.com/yk3wubft).
+## Deployment
+The app is deployed here on Netlify - https://dinostat.netlify.app/dinosaurs
 
-And before we go there's "one more thing"! Once you decide what to include
-in your `readme` feel free to replace the text we've provided here.
+## Tech stack
+- React
+- Vite
+- NextUI
+- Axios
+- ChartJS
+- React Leaflet
 
-> Own it & Make it your Own!
+## Features
+# Chart Visualization
+The diet and dinosaur species distribution are plotted in a pie chart and doughnut chart.
+![image](https://github.com/chingu-voyages/v48-tier2-team-11/assets/108878343/aa8a2b1d-8201-4637-81c8-59cf4fa78a09)
+![image](https://github.com/chingu-voyages/v48-tier2-team-11/assets/108878343/1dbd0712-032d-4316-9949-db31a59fb2ab)
 
-## Team Documents
+# Interactive map
+React leaflet is used to show an interactive map and set a pin on the location that the dinosaur lived in.
+![image](https://github.com/chingu-voyages/v48-tier2-team-11/assets/108878343/f311caaf-9500-463a-9f47-d5e98e57d5b6)
 
-You may find these helpful as you work together to organize your project.
+# Dinosaur of the day
+You see a new dinosaur on the homepage every day.
+![image](https://github.com/chingu-voyages/v48-tier2-team-11/assets/108878343/e96d3714-e805-48f6-92e8-04bbe5481107)
 
-- [Team Project Ideas](./docs/team_project_ideas.md)
-- [Team Decision Log](./docs/team_decision_log.md)
+## Cloning instructions
+If you wish to clone our repository, follow the below steps
+- Clone the repository
+  `git clone https://github.com/chingu-voyages/v48-tier2-team-11`
+- Navigate into the repository
+  `cd v48-tier2-team-11/dinostat`
+- Run build
+  `npm run dev`
+Make sure that you have npm and the required packages installed.
 
-Meeting Agenda templates (located in the `/docs` directory in this repo):
-
-- Meeting - Voyage Kickoff --> ./docs/meeting-voyage_kickoff.docx
-- Meeting - App Vision & Feature Planning --> ./docs/meeting-vision_and_feature_planning.docx
-- Meeting - Sprint Retrospective, Review, and Planning --> ./docs/meeting-sprint_retrospective_review_and_planning.docx
-- Meeting - Sprint Open Topic Session --> ./docs/meeting-sprint_open_topic_session.docx
-
-## Our Team
-
-Everyone on your team should add their name along with a link to their GitHub
-& optionally their LinkedIn profiles below. Do this in Sprint #1 to validate
-your repo access and to practice PR'ing with your team _before_ you start
-coding!
-
-- Keerthi Kumar: [GitHub](https://github.com/keerthikmr) / [LinkedIn](https://www.linkedin.com/in/keerthi-kumar10)
-- Yasir Azhari: [GitHub](https://github.com/YasirAzhari) / [LinkedIn](https://www.linkedin.com/in/yasir-azhari-6a48b8219/)
-- Dinesh Anbazhagan: [GitHub](https://github.com/itzmidinesh) / [LinkedIn](https://www.linkedin.com/in/dineshanbazhagan/)
-- Saswat Samal: [GitHub](https://github.com/saswat10) / [LinkedIn](https://www.linkedin.com/in/saswat1091/)
-
-- Teammate name #n: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
+## Developers
+Keerthi Kumar  -   https://github.com/keerthikmr  
+Yasir Azhari   -   https://github.com/YasirAzhari  
+Saswat Samal   -   https://github.com/saswat10  
+Poorva Shukla  -   https://github.com/PmS-crypto   
