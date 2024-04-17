@@ -244,11 +244,17 @@ b {
 }
 
 .day-dino{
+  display: flex;
+  flex-direction: column;
   text-align: center;
   padding: 0.5rem;
+  align-items: center;
 }
 
 .day-dino-image{
+  display: flex;
+  text-align: center;
+  justify-content: center;
   width: 50%;
   padding: 1rem;
 
@@ -330,10 +336,9 @@ b {
     .filter-drop button {
       width: 20%;
       height: 2.5rem;
-
+    }
 
     .day-dino-image{
       width: 100%;
-
     }
 }
