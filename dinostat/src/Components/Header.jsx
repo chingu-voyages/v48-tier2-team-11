@@ -1,11 +1,22 @@
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Header() {
+  const [width, setWidth] = useState(window.innerWidth);
+
+  const updateDimensions = () => {
+    setWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', updateDimensions);
+    return () => window.removeEventListener('resize', updateDimensions);
+  }, []);
+
   const [isOpen, setIsOpen] = useState(false);
 
   const navDisplay = () => {
-    if (isOpen || window.innerWidth > 768) {
+    if (isOpen || width > 1250) {
       return 'flex';
     }
     return 'none';
